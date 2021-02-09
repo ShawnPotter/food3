@@ -1,0 +1,12 @@
+{
+  "name": "spotterg/sdev328/food3",
+  "authors": [
+    {
+      "name": "Shawn Potter",
+      "email": "spotter@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}

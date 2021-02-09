@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Other Meta Tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <title>Order</title>
+</head>
+<body>
+<div class="container" id="main">
+  <h1>Food Order</h1>
+  <form method="POST" action="order2">
+    <label>What would you like to order?
+      <input type="text" name="food">
+    </label>
+    <br>
+    <strong>Select a meal</strong>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="breakfast" id="breakfast">
+      <label class="form-check-label" for="breakfast">
+        Breakfast
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="lunch" id="lunch">
+      <label class="form-check-label" for="lunch">
+        Lunch
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="dinner" id="dinner">
+      <label class="form-check-label" for="dinner">
+        Dinner
+      </label>
+    </div>
+    <input class="btn btn-secondary" type="submit" value="Next >>">
+  </form>
+</div>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/cjs/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- Optional JavaScript -->
+</body>
+</html>
