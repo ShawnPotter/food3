@@ -18,30 +18,14 @@
 <div class="container" id="main">
   <h1>Food Order, Continued</h1>
   <form method="POST" action="summary">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="mayo" id="mayo" name="conds[]">
-      <label class="form-check-label" for="mayo">
-        Mayonnaise
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="ketchup" id="ketchup" name="conds[]">
-      <label class="form-check-label" for="ketchup">
-        Ketchup
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="mustard" id="mustard" name="conds[]">
-      <label class="form-check-label" for="mustard">
-        Mustard
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="sriracha" id="sriracha" name="conds[]">
-      <label class="form-check-label" for="sriracha">
-        Sriracha
-      </label>
-    </div>
+    <repeat group="{{ @condiments }}" value="{{ @value }}">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="{{ @value }}" id="{{ @value }}" name="conds[]">
+        <label class="form-check-label" for="{{ @value }}">
+          {{ @value }}
+        </label>
+      </div>
+    </repeat>
     <br>
     <input class="btn btn-secondary" type="submit" value="Place Order">
   </form>
@@ -49,9 +33,8 @@
 
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/cjs/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 <!-- Optional JavaScript -->
 </body>
