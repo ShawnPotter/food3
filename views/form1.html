@@ -17,20 +17,39 @@
 <body>
 <div class="container" id="main">
   <h1>Food Order</h1>
-  <form method="POST" action="order2">
+  <form method="POST" action="#">
     <label>What would you like to order?
-      <input type="text" name="food">
+      <input type="text" name="food" value="{{ @userFood }}"><br>
+      <span class="text-danger" style="font-size: 0.8rem">
+        <check if="{{ isset(@errors['food']) }}">
+          {{ @errors['food'] }}
+        </check>
+      </span>
     </label>
     <br>
     <strong>Select a meal</strong>
-      <repeat group="{{ @meals }}" value="{{ @value }}">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="{{ @value }}" id="{{ @value }}">
-          <label class="form-check-label" for="{{ @value }}">
-            {{ @value }}
-          </label>
+        <div class="form-group">
+          <div>
+            <repeat group="{{ @meals }}" value="{{ @value }}">
+              <input
+                      class="form-check-input"
+                      type="radio" name="meal"
+                      id="{{ @value }}"
+                      value="{{ @value }}"
+                      <check if="{{ @meal == @userMeal }}">checked</check>
+              >
+              <label class="form-check-label" for="{{ @value }}">
+                {{ ucfirst(@value) }}
+              </label>
+              <br>
+            </repeat>
+          </div>
         </div>
-      </repeat>
+      <span class="text-danger" style="font-size: 0.8rem">
+        <check if="{{ isset(@errors['meal']) }}">
+          {{ @errors['meal'] }}
+        </check>
+      </span><br>
     <input class="btn btn-secondary" type="submit" value="Next >>">
   </form>
 </div>

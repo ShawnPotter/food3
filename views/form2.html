@@ -17,12 +17,12 @@
 <body>
 <div class="container" id="main">
   <h1>Food Order, Continued</h1>
-  <form method="POST" action="summary">
+  <form method="POST" action="#">
     <repeat group="{{ @condiments }}" value="{{ @value }}">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="{{ @value }}" id="{{ @value }}" name="conds[]">
         <label class="form-check-label" for="{{ @value }}">
-          {{ @value }}
+          {{ ucfirst(@value) }}
         </label>
       </div>
     </repeat>

@@ -1,69 +1,52 @@
 <?php
-  //The Controller
+//The Controller
 
-  //turn on error reporting
-  ini_set('display_errors', 1);
-  error_reporting(E_ALL);
+//turn on error reporting
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-  //Start a session
-  session_start();
-
-  //require autoload file
-  require_once("vendor/autoload.php");
+//require autoload file
+require_once("vendor/autoload.php");
+/*
   require_once("model/data-layer.php");
+  require_once("model/validate.php");
+*/ //replaced by adding classes into composer
 
-  //create an instance of the base class
-  $f3 = Base::instance();
-  $f3->set('DEBUG', 3);
+//Start a session
+session_start();
 
-  //Define a default route (home page)
-  $f3->route('GET /', function(){
-    $view = new Template();
-    echo $view->render('views/home.html');
-  });
+//create an instance of the base class
+$f3 = Base::instance();
+$validator = new Validate();
+$data = new DataLayer();
+$order = new Order();
+$controller = new Controller($f3);
 
-  //Define a order route
-  $f3->route('GET /order', function($f3){
-    $f3->set("meals", getMeals());
-    
-    $view = new Template();
-    echo $view->render('views/form1.html');
-  });
+$f3->set('DEBUG', 3);
 
-  //Define order 2 route
-  $f3->route('POST /order2', function($f3){
-    //add data form form1 to Session Array
-    //var_dump($_POST);
-    
-    $f3->set("condiments", getCondiments());
-    
-    if(isset($_POST['food'])){
-      $_SESSION['food'] = $_POST['food'];
-    }
-    if(isset($_POST['meal'])){
-      $_SESSION['meal'] = $_POST['meal'];
-    }
-    $view = new Template();
-    echo $view->render('views/form2.html');
-  });
+//Define a default route (home page)
+$f3->route('GET /', function(){
+  global $controller;
+  $controller -> home();
+});
 
-  //Define a summary route
-  $f3->route('POST /summary', function(){
-//    echo "<p>POST:</p>";
-//    var_dump($_POST);
-//
-//    echo "<p>SESSION:</p>";
-//    var_dump($_SESSION);
+//define route to order
+$f3->route('GET|POST /order', function($f3){
+  global $controller;
+  $controller -> order();
+});
 
-    //add data from form2 to Session Array
-    //var_dump($_POST);
-    if(isset($_POST['conds'])){
-      $_SESSION['conds'] = implode(", ", $_POST['conds']);
-    }
+//Define route to order2
+$f3->route('GET|POST /order2', function($f3){
+  global $controller;
+  $controller -> order2();
+});
 
-    $view = new Template();
-    echo $view->render('views/summary.html');
-  });
+//Define route to summary
+$f3->route('GET /summary', function(){
+  global $controller;
+  $controller -> summary();
+});
 
-  //run fat free
-  $f3->run();
+//run fat free
+$f3->run();
